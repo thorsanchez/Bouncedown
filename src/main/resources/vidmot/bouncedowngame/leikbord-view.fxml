@@ -3,6 +3,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import vidmot.bouncedowngame.Bolti?>
+<?import vidmot.bouncedowngame.Pallur?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="vidmot.bouncedowngame.Leikbord">
 
@@ -11,8 +12,10 @@
     <Bolti fx:id="bolti" fill="Brown" radius="8.0"/>
 
     <!-- Pallar -->
-    <Rectangle fx:id="platform1" fill="GREY" height="20.0" layoutY="249.0" width="100.0"/>
-    <Rectangle fx:id="platform2" fill="GREY" height="20.0" layoutX="492.0" layoutY="146.0" width="100.0"/>
-    <Rectangle fx:id="platform3" fill="GREY" height="20.0" layoutY="146.0" width="100.0"/>
-
+    <Rectangle fx:id="gamePane" fill="GREY" height="20.0" layoutY="249.0" width="100.0">
+    <!-- add other UI elements here -->
+    <Pallur/>
+    <Pallur/>
+    <Pallur/>
+    <Rectangle/>
 </AnchorPane>

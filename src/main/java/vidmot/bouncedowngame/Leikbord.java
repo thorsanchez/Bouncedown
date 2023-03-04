@@ -12,10 +12,12 @@ public class Leikbord extends Pane {
 
     @FXML
     private Bolti bolti;
+    @FXML
+    private Pallur pallur;
 
     //tilviksbreytur
     private final ObservableList<Bolti> boltinn = FXCollections.observableArrayList();    // boltinn
-    private BouncingController bc; // tenging í controllerinn til að geta sett í bið, áfram, uppfæra stig og ljúka leik
+    private BouncingController sc; // tenging í controllerinn til að geta sett í bið, áfram, uppfæra stig og ljúka leik
     private Bolti ball;    // boltinn
 
     public Leikbord() {
@@ -30,10 +32,19 @@ public class Leikbord extends Pane {
     /**
      * Setur controller fyrir viðmótshlutinn
      *
-     * @param bc controllerinn
+     * @param sc controllerinn
      */
-    public void setController(BouncingController bc) {
-        this.bc = bc;
+    public void setController(BouncingController sc) {
+        this.sc = sc;
+    }
+
+    /**
+     * Nær í controllerinn
+     *
+     * @return controllerinn
+     */
+    public BouncingController getController() {
+        return sc;
     }
 
 
@@ -50,6 +61,15 @@ public class Leikbord extends Pane {
         return ball;
     }
 
+    public Pallur nyrPallur() {
+        if (pallur != null)
+            getChildren().remove(pallur);
+        pallur = new Pallur(this);// til að sé hægt að setja í bið
+        getChildren().add(pallur);
+        return pallur;
+    }
+
+
     public void setBolti(Bolti bolti) {
         this.bolti = bolti;
     }
@@ -65,4 +85,6 @@ public class Leikbord extends Pane {
     public double getHorn() {
         return getLayoutX();
     }
+
+    
 }

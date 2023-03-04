@@ -5,7 +5,9 @@ public enum Stefna {
 
     RIGHT(0),
 
-    DOWN(270);
+    DOWN(270),
+
+    UPP(90);
 
     private int gradur;
 
@@ -16,6 +18,6 @@ public enum Stefna {
     public int getGradur() {
         return gradur;
     }
-    
+
 
 }

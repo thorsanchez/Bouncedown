@@ -11,7 +11,7 @@ public class Pallur extends Rectangle {
     private static final String FXML_SKRA = "pallur-view.fxml";
     private static final Random random = new Random();
 
-    public Pallur() {
+    public Pallur(Leikbord b) {
         lesa(FXML_SKRA);
     }
 
@@ -37,7 +37,7 @@ public class Pallur extends Rectangle {
      * @param fxmlSkra nafn á fxml skrá
      */
     protected void lesa(String fxmlSkra) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlSkra));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pallur-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

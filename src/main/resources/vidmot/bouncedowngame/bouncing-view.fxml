@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import vidmot.bouncedowngame.Leikbord?>
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="469.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="vidmot.bouncedowngame.BouncingController">
-    <children>
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="vidmot.bouncedowngame.BouncingController" spacing="10"
+      alignment="CENTER" prefHeight="400.0" prefWidth="469.0">
+    <HBox alignment="CENTER">
         <Leikbord fx:id="leikbord" prefHeight="400.0" prefWidth="365.0"/>
-        <VBox prefHeight="200.0" prefWidth="100.0">
-            <children>
-                <Label fx:id="fxStigin" prefHeight="17.0" prefWidth="71.0" text="Label"/>
-            </children>
+        <VBox prefHeight="200.0" prefWidth="100.0" alignment="CENTER">
+            <Label fx:id="fxStigin" prefHeight="17.0" prefWidth="71.0" text="Label"/>
         </VBox>
-    </children>
-</HBox>
+    </HBox>
+</VBox>

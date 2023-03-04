@@ -11,7 +11,7 @@ public class Bolti extends Circle {
 
     private static final double SKREF_STAERD = 1.0; //skref
     private double stefnaG = 0.0; // stefna í gráðum
-    
+
     //Ebba er með þetta í Faeda snakur
     public Bolti(Leikbord b) {
         lesa();
@@ -30,7 +30,7 @@ public class Bolti extends Circle {
     }
 
     //ai
-    public void forward() {
+    public void afram() {
         double angle = getRotate();
         double x = getLayoutX();
         double y = getLayoutY();
@@ -67,5 +67,4 @@ public class Bolti extends Circle {
         setRotate(stefnagradur);
     }
 }
-
 
