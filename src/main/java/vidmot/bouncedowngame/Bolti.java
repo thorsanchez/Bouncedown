@@ -9,7 +9,7 @@ public class Bolti extends Circle {
     // fastar
     private static final String BOLTI_VIEW_FXML = "bolti-view.fxml";
 
-    private static final double SKREF_STAERD = 1.0; //skref
+    private static final double SKREF_STAERD = 10; //skref
     private double stefnaG = 0.0; // stefna í gráðum
 
     //Ebba er með þetta í Faeda snakur
@@ -56,7 +56,7 @@ public class Bolti extends Circle {
         setLayoutX(x);
         setLayoutY(y);
     }
-    
+
 
     // set stefna
     public void setStefna(double stefnagradur) {
@@ -64,4 +64,3 @@ public class Bolti extends Circle {
         setRotate(stefnagradur);
     }
 }
-

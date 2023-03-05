@@ -30,6 +30,7 @@ public class BouncingApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+        sc.stillaTimeline();
     }
 
 }

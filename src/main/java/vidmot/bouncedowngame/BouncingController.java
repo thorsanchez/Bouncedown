@@ -1,9 +1,14 @@
 package vidmot.bouncedowngame;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +27,10 @@ public class BouncingController {
     private Label fxStigin; //stigacounter
     @FXML
     private Leikbord leikbord;    // leiksvæðið
+    public Rectangle gamePane;
+    @FXML
+    private VBox fxVBox;
+    private Timeline t; // Tímalína fyrir Animation á leiknum
 
 
     public void orvatakkar() {
@@ -57,18 +66,33 @@ public class BouncingController {
         }
     }
 
+    public void stillaTimeline() {
+        KeyFrame k = new KeyFrame(Duration.millis(1000),
+                e -> leikbord.afram());
+        Timeline t = new Timeline(k);
+        t.setCycleCount(Timeline.INDEFINITE);
+        t.play();
+    }
+    // private void leikjaSkref() {
+    //  gamePane.getTransforms().add(new Translate(5, 100));
+    // }
 
-    public void initialize() {
-        // other initialization code here
-        leikbord.setController(this);
-        leikbord.nyrBolti();
-        testBolti();
-
-        leikbord.nyrPallur();
-        //leikbord.nyrLeikur(3);
-        //testBall();
-
+    public void testPallar() {
+        leikbord.getPallur().setRotate(Stefna.DOWN.getGradur());
+        for (int i = 0; i < 50; i++) {
+            leikbord.getPallur().afram();
+        }
     }
 
 
+    public void initialize() {
+        // other initialization code here
+        //leikbord.setController(this);
+        //leikbord.nyrBolti();
+        //testBolti();
+        //testPallar();
+        //leikbord.nyrPallur(3);
+        //leikbord.nyrLeikur(3);
+        //testBall();
+    }
 }
