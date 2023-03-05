@@ -11,32 +11,13 @@ public class Pallur extends Rectangle {
     private static final String FXML_SKRA = "pallur-view.fxml";
     private static final Random random = new Random();
 
-    public Pallur(Leikbord b) {
-        lesa(FXML_SKRA);
+    public Pallur() {
+        lesa();
     }
 
-    /**
-     * Setja pall á borð b á random stað(hægri eða v)
-     *
-     * @param b leikjaborð
-     */
-    public void setjaABord(Leikbord b) {
-        double leftOrRight = random.nextDouble();
-        if (leftOrRight < 0.5) {
-            setX(0);
-        } else {
-            setX(b.getWidth() - getWidth());
-        }
-        setY(random.nextInt((int) (b.getHeight() - getHeight())));
-        b.getChildren().add(this);
-    }
 
-    /**
-     * Lesa inn útlit úr fxml skrá
-     *
-     * @param fxmlSkra nafn á fxml skrá
-     */
-    protected void lesa(String fxmlSkra) {
+    //Lesa inn útlit úr fxml skrá
+    protected void lesa() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pallur-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -47,5 +28,6 @@ public class Pallur extends Rectangle {
             throw new RuntimeException(exception);
         }
     }
+
 
 }

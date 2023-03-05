@@ -56,10 +56,7 @@ public class Bolti extends Circle {
         setLayoutX(x);
         setLayoutY(y);
     }
-
-    public Bolti getBolti() {
-        return this;
-    }
+    
 
     // set stefna
     public void setStefna(double stefnagradur) {

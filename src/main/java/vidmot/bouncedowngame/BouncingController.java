@@ -1,11 +1,9 @@
 package vidmot.bouncedowngame;
 
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,11 +16,7 @@ public class BouncingController {
 
     //Búðu til hakkatöflu sem fer frá KeyCode yfir í Stefna
     private Map<KeyCode, Stefna> keyToStefna = new HashMap<>();
-
-    private AnimationTimer animationTimer; //animation (þurfum að búa til animation loop)
-    @FXML
-    private Pane gamePane;
-
+    
     // viðmótshlutir
     @FXML
     private Label fxStigin; //stigacounter
@@ -57,10 +51,6 @@ public class BouncingController {
     }
 
 
-    public void setLeikbord(Leikbord leikbord) {
-        this.leikbord = leikbord;
-    }
-
     public void initialize() {
         // other initialization code here
         leikbord.setController(this);
@@ -69,9 +59,10 @@ public class BouncingController {
         //orvatakkars();
 
         leikbord.nyrPallur();
-
+        //leikbord.nyrLeikur(3);
         //testBall();
 
-
     }
+
+
 }

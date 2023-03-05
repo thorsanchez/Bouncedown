@@ -19,6 +19,8 @@ public class Leikbord extends Pane {
     private final ObservableList<Bolti> boltinn = FXCollections.observableArrayList();    // boltinn
     private BouncingController sc; // tenging í controllerinn til að geta sett í bið, áfram, uppfæra stig og ljúka leik
     private Bolti ball;    // boltinn
+    private final ObservableList<Pallur> pallar = FXCollections.observableArrayList();//eitursnákar
+
 
     public Leikbord() {
         bolti = new Bolti(this);
@@ -49,9 +51,9 @@ public class Leikbord extends Pane {
 
 
     /**
-     * Býr til nýjan snák. Ef snákur er á borðinu þá er hann fjarlægður
+     * Býr til nýjan bolta. Ef bolti er á borðinu þá er hann fjarlægður
      *
-     * @return skilar nýjum snák
+     * @return skilar nýjum bolta
      */
     public Bolti nyrBolti() {
         if (ball != null)
@@ -64,27 +66,9 @@ public class Leikbord extends Pane {
     public Pallur nyrPallur() {
         if (pallur != null)
             getChildren().remove(pallur);
-        pallur = new Pallur(this);// til að sé hægt að setja í bið
+        pallur = new Pallur();// til að sé hægt að setja í bið
         getChildren().add(pallur);
         return pallur;
     }
 
-
-    public void setBolti(Bolti bolti) {
-        this.bolti = bolti;
-    }
-
-    public double getHaed() {
-        return getHeight();
-    }
-
-    public double getBreidd() {
-        return getWidth();
-    }
-
-    public double getHorn() {
-        return getLayoutX();
-    }
-
-    
 }
