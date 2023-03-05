@@ -25,10 +25,17 @@ public class Leikbord extends Pane {
     public Leikbord() {
         bolti = new Bolti(this);
         getChildren().add(bolti);
+        pallur = new Pallur();
+        getChildren().add(pallur);
+
     }
 
     public Bolti getBolti() {
         return bolti;
+    }
+
+    public Pallur getPallur() {
+        return pallur;
     }
 
     /**
@@ -63,12 +70,23 @@ public class Leikbord extends Pane {
         return ball;
     }
 
-    public Pallur nyrPallur() {
-        if (pallur != null)
-            getChildren().remove(pallur);
-        pallur = new Pallur();// til að sé hægt að setja í bið
-        getChildren().add(pallur);
+    public Pallur nyrPallur(int fjoldi) {
+        for (int i = 0; i < fjoldi; i++) {
+            if (pallur != null)
+                getChildren().remove(pallur);
+            pallur = new Pallur();// til að sé hægt að setja í bið
+            getChildren().add(pallur);
+        }
         return pallur;
     }
+
+    public void afram() {
+        pallur.afram();
+    }
+
+    public void nyrLeikur(int fjoldi) {
+        nyrPallur(fjoldi);
+    }
+
 
 }
