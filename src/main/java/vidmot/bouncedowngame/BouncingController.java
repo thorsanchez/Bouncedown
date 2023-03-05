@@ -16,32 +16,39 @@ public class BouncingController {
 
     //Búðu til hakkatöflu sem fer frá KeyCode yfir í Stefna
     private Map<KeyCode, Stefna> keyToStefna = new HashMap<>();
-    
+
     // viðmótshlutir
     @FXML
     private Label fxStigin; //stigacounter
     @FXML
     private Leikbord leikbord;    // leiksvæðið
 
+
     public void orvatakkar() {
+        Map<KeyCode, Stefna> keyToStefna = new HashMap<>();
         keyToStefna.put(KeyCode.UP, null);   // not used in this case
-        keyToStefna.put(KeyCode.DOWN, Stefna.DOWN); //notum Stefna enum hérna
+        keyToStefna.put(KeyCode.DOWN, Stefna.DOWN);
         keyToStefna.put(KeyCode.RIGHT, Stefna.RIGHT);
         keyToStefna.put(KeyCode.LEFT, Stefna.LEFT);
 
         fxStigin.getScene().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            Stefna stefna = keyToStefna.get(event.getCode());
-            if (stefna != null) {
-                int gradur = stefna.getGradur();
-                System.out.println("Gráður: " + gradur);
-                // set some instance variable in the UI with the degrees value
-                leikbord.getBolti().setStefna(stefna.getGradur());
-
+            try {
+                Stefna stefna = keyToStefna.get(event.getCode());
+                if (stefna != null) {
+                    int gradur = stefna.getGradur();
+                    System.out.println("Gráður: " + gradur);
+                    // set some instance variable in the UI with the degrees value
+                    Bolti bolti = leikbord.getBolti();
+                    bolti.setStefna(stefna.getGradur());
+                    bolti.afram();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                event.consume();
             }
-            event.consume();
         });
     }
-
 
     public void testBolti() {
         leikbord.getBolti().setRotate(Stefna.RIGHT.getGradur());
@@ -55,8 +62,7 @@ public class BouncingController {
         // other initialization code here
         leikbord.setController(this);
         leikbord.nyrBolti();
-        //testBolti();
-        //orvatakkars();
+        testBolti();
 
         leikbord.nyrPallur();
         //leikbord.nyrLeikur(3);
