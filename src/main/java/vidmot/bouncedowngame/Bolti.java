@@ -37,7 +37,7 @@ public class Bolti extends Circle {
 
         // calculate the new position based on the current heading angle
         double dx = Math.cos(Math.toRadians(angle));
-        double dy = Math.sin(Math.toRadians(angle));
+        //double dy = Math.sin(Math.toRadians(angle));
 
         // move left or right based on the current heading angle
         if (dx == 0) {
@@ -51,7 +51,7 @@ public class Bolti extends Circle {
         }
 
         // move up or down based on the current heading angle
-        y += dy * SKREF_STAERD;
+        y += SKREF_STAERD;
 
         setLayoutX(x);
         setLayoutY(y);
@@ -62,5 +62,15 @@ public class Bolti extends Circle {
     public void setStefna(double stefnagradur) {
         this.stefnaG = stefnagradur;
         setRotate(stefnagradur);
+    }
+
+    /**
+     * Athugar hvort snákur rekst á eitursnák
+     *
+     * @param d eitursnákur
+     * @return satt ef árekstur annars false
+     */
+    public boolean erArekstur(Pallur d) {
+        return getBoundsInParent().intersects(d.getBoundsInParent());
     }
 }

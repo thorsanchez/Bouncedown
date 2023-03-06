@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Ebba Þóra Hvannberg
-Viðmót fyrir EiturSnakur -->
 <?import javafx.scene.shape.Rectangle?>
 <?import java.lang.Integer?>
 <?import java.lang.String?>

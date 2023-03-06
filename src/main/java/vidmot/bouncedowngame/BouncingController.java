@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import vinnsla.Leikur;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,12 +32,13 @@ public class BouncingController {
     @FXML
     private VBox fxVBox;
     private Timeline t; // Tímalína fyrir Animation á leiknum
+    private Leikur leikur;  // vinnslan
 
 
     public void orvatakkar() {
         Map<KeyCode, Stefna> keyToStefna = new HashMap<>();
         keyToStefna.put(KeyCode.UP, null);   // not used in this case
-        keyToStefna.put(KeyCode.DOWN, Stefna.DOWN);
+        keyToStefna.put(KeyCode.DOWN, null);
         keyToStefna.put(KeyCode.RIGHT, Stefna.RIGHT);
         keyToStefna.put(KeyCode.LEFT, Stefna.LEFT);
 
@@ -68,11 +70,16 @@ public class BouncingController {
 
     public void stillaTimeline() {
         KeyFrame k = new KeyFrame(Duration.millis(1000),
-                e -> leikbord.afram());
-        Timeline t = new Timeline(k);
-        t.setCycleCount(Timeline.INDEFINITE);
+                e -> {
+                    leikbord.afram();
+                    leikbord.aframPallur();
+                });
+        t = new Timeline(k);
+        t.setCycleCount(Timeline.INDEFINITE);   // leikurinn leikur endalaust
+        leikbord.nyrLeikur(3);
         t.play();
     }
+
     // private void leikjaSkref() {
     //  gamePane.getTransforms().add(new Translate(5, 100));
     // }
@@ -94,5 +101,10 @@ public class BouncingController {
         //leikbord.nyrPallur(3);
         //leikbord.nyrLeikur(3);
         //testBall();
+    }
+
+    public void leikLokid(String skilabod) {
+        leikur.leikLokid();
+        t.stop();
     }
 }

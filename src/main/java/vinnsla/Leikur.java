@@ -1,17 +1,34 @@
 package vinnsla;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Leikur {
-    private IntegerProperty stig = new SimpleIntegerProperty(0);
+    private int stigin = 0;
+    private final ObservableList<Integer> stigatafla = FXCollections.observableArrayList(); // stigatafla
 
-    public IntegerProperty stiginProperty() {
-        return stig;
+
+    /**
+     * Hækkar stigin um einn
+     */
+    public void vinningur() {
+        stigin++;
     }
 
-    public void haekkaStigin() {
-        stig.set(stig.get() + 1);
+    /**
+     * Leik er lokið og stigum bætt við stigatölu
+     */
+    public void leikLokid() {
+        stigatafla.add(stigin);
+        stigin = 0;
     }
 
+    /**
+     * Skilar stigatöflunni
+     *
+     * @return stigataflan
+     */
+    public ObservableList<Integer> getStigin() {
+        return stigatafla;
+    }
 }
