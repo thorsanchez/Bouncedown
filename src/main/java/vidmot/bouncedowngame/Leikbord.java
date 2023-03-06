@@ -91,9 +91,9 @@ public class Leikbord extends Pane {
     public void aframPallur() {
         for (Pallur d : pallar) {
             d.afram();
-            if (bolti.erArekstur(d)) { // Lagfæring
-                sc.leikLokid(EITURSNAKUR_DRAP);
-                return;
+            if (bolti.erArekstur(d)) {
+                bolti.setTranslateY(d.getTranslateY() - bolti.getHeight()); // set bolti on top of the pallur
+                bolti.setVely(0); // set vertical velocity to 0
             }
         }
     }

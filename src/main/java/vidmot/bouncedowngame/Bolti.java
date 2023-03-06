@@ -12,6 +12,9 @@ public class Bolti extends Circle {
     private static final double SKREF_STAERD = 10; //skref
     private double stefnaG = 0.0; // stefna í gráðum
 
+    private double velx;
+    private double vely;
+
     //Ebba er með þetta í Faeda snakur
     public Bolti(Leikbord b) {
         lesa();
@@ -29,7 +32,6 @@ public class Bolti extends Circle {
         }
     }
 
-    //ai
     public void afram() {
         double angle = getRotate();
         double x = getLayoutX();
@@ -72,5 +74,13 @@ public class Bolti extends Circle {
      */
     public boolean erArekstur(Pallur d) {
         return getBoundsInParent().intersects(d.getBoundsInParent());
+    }
+
+    public double getHeight() {
+        return 2 * getRadius();
+    }
+
+    public void setVely(double vely) {
+        this.vely = vely;
     }
 }
