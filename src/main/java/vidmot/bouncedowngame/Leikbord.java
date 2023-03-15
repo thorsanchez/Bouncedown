@@ -21,6 +21,7 @@ public class Leikbord extends Pane {
     private Bolti ball;    // boltinn
     private final ObservableList<Pallur> pallar = FXCollections.observableArrayList();//eitursnákar
     public static final String EITURSNAKUR_DRAP = "Eitursnákur drap þig";
+    public Stefna stefna;
 
     public Leikbord() {
         bolti = new Bolti(this);
@@ -81,7 +82,7 @@ public class Leikbord extends Pane {
     }
 
     public void afram() {
-        bolti.afram();
+        bolti.afram(Stefna.DOWN);
     }
 
     public void nyrLeikur(int fjoldi) {
@@ -92,13 +93,39 @@ public class Leikbord extends Pane {
         for (Pallur d : pallar) {
             d.afram();
             if (bolti.erArekstur(d)) {
-                bolti.setTranslateY(d.getTranslateY() - bolti.getHeight()); // set bolti on top of the pallur
-                bolti.setVely(0); // set vertical velocity to 0
+                bolti.setTranslateY(pallur.getTranslateY() - bolti.getHeight()); // set bolti á pallur
+                bolti.setVely(0); // set vertical í 0
             }
         }
+        // check if the ball has collided with any paddle
+        pallar.stream()
+                .filter(d -> bolti.erArekstur(d))
+                .findFirst()
+                .ifPresent(pallur -> {
+                    bolti.setTranslateY(pallur.getTranslateY() - bolti.getHeight());
+                    bolti.setVely(0);
+                });
     }
-
-
 }
+
+    /*
+    public void aframPallur() {
+        for (Pallur d : pallar) {
+            d.afram();
+            bolti.erArekstur(d);
+            //bolti.setTranslateY(d.getTranslateY() - bolti.getHeight()); // set bolti á pallur
+            //bolti.setVely(0); // set vertical í 0
+        }
+    }
+}
+*/
+
+/*
+    public Boolean erBoltiABotni() {
+
+    }
+*/
+
+
 
 

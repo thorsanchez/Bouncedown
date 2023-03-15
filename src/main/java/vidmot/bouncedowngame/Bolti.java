@@ -32,31 +32,30 @@ public class Bolti extends Circle {
         }
     }
 
-    public void afram() {
+    public void afram(Stefna stefna) {
         double angle = getRotate();
         double x = getLayoutX();
         double y = getLayoutY();
 
         // calculate the new position based on the current heading angle
-        double dx = Math.cos(Math.toRadians(angle));
-        //double dy = Math.sin(Math.toRadians(angle));
-
-        // move left or right based on the current heading angle
-        if (dx == 0) {
-            // moving straight up or down, no left/right movement
-        } else if (dx > 0) {
-            // moving to the right
-            x += SKREF_STAERD;
-        } else {
-            // moving to the left
+        if (stefna.getGradur() == 180) {
             x -= SKREF_STAERD;
+        } else if (stefna.getGradur() == 0) {
+            x += SKREF_STAERD;
         }
 
         // move up or down based on the current heading angle
-        y += SKREF_STAERD;
-
-        setLayoutX(x);
-        setLayoutY(y);
+        if (y + SKREF_STAERD < getParent().getBoundsInLocal().getHeight()) {
+            // the ball is not at the bottom of the screen
+            y += SKREF_STAERD;
+            setLayoutX(x);
+            setLayoutY(y);
+        } else {
+            // the ball is at the bottom of the screen
+            y = getParent().getBoundsInLocal().getHeight() - getHeight();
+            setLayoutX(x);
+            setLayoutY(y);
+        }
     }
 
 
@@ -72,9 +71,25 @@ public class Bolti extends Circle {
      * @param d eitursnákur
      * @return satt ef árekstur annars false
      */
+    /*
     public boolean erArekstur(Pallur d) {
         return getBoundsInParent().intersects(d.getBoundsInParent());
     }
+     */
+    //ai
+    public boolean erArekstur(Pallur d) {
+        return getBoundsInParent().intersects(d.getBoundsInParent());
+    }
+
+           /*
+            setLayoutX(d.getLayoutX() + d.getWidth());
+            setLayoutY(palletTopY - getHeight());
+            return true;
+        }
+        return false;
+    }
+    */
+
 
     public double getHeight() {
         return 2 * getRadius();
@@ -83,4 +98,6 @@ public class Bolti extends Circle {
     public void setVely(double vely) {
         this.vely = vely;
     }
+
+
 }

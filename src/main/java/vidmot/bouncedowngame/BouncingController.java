@@ -27,7 +27,8 @@ public class BouncingController {
     @FXML
     private Label fxStigin; //stigacounter
     @FXML
-    private Leikbord leikbord;    // leiksvæðið
+    private Leikbord leikbord; // leiksvæðið
+    private Bolti bolti;
     public Rectangle gamePane;
     @FXML
     private VBox fxVBox;
@@ -50,8 +51,9 @@ public class BouncingController {
                     System.out.println("Gráður: " + gradur);
                     // set some instance variable in the UI with the degrees value
                     Bolti bolti = leikbord.getBolti();
+                    //bolti.setStefna(stefna.getGradur());
                     bolti.setStefna(stefna.getGradur());
-                    bolti.afram();
+                    bolti.afram(stefna);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -61,12 +63,6 @@ public class BouncingController {
         });
     }
 
-    public void testBolti() {
-        leikbord.getBolti().setRotate(Stefna.RIGHT.getGradur());
-        for (int i = 0; i < 50; i++) {
-            leikbord.getBolti().afram();
-        }
-    }
 
     public void stillaTimeline() {
         KeyFrame k = new KeyFrame(Duration.millis(1000),
