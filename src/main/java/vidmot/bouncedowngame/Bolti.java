@@ -77,9 +77,18 @@ public class Bolti extends Circle {
     }
      */
     //ai
+    //public boolean erArekstur(Pallur d) {
+    //   return getBoundsInParent().intersects(d.getBoundsInParent());
+    //}
     public boolean erArekstur(Pallur d) {
-        return getBoundsInParent().intersects(d.getBoundsInParent());
+        if (getBoundsInParent().intersects(d.getBoundsInParent())) {
+            // Set the y value of the ball to the y value of the snake
+            setLayoutY(d.getLayoutY() - getHeight());
+            return true;
+        }
+        return false;
     }
+
 
            /*
             setLayoutX(d.getLayoutX() + d.getWidth());

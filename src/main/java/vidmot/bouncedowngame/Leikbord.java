@@ -26,7 +26,6 @@ public class Leikbord extends Pane {
     public Leikbord() {
         bolti = new Bolti(this);
         getChildren().add(bolti);
-
     }
 
 
@@ -97,20 +96,8 @@ public class Leikbord extends Pane {
                 bolti.setVely(0); // set vertical í 0
             }
         }
-        // check if the ball has collided with any paddle
-        pallar.stream()
-                .filter(d -> bolti.erArekstur(d))
-                .findFirst()
-                .ifPresent(pallur -> {
-                    bolti.setTranslateY(pallur.getTranslateY() - bolti.getHeight());
-                    bolti.setVely(0);
-                });
-        //ai
-        if (ball != null && pallur != null && ball.getBoundsInParent().intersects(pallur.getBoundsInParent())) {
-            ball.setLayoutY(pallur.getLayoutY() - ball.getHeight());
-        }
-
     }
+
 }
 
     /*
