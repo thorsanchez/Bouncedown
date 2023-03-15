@@ -93,7 +93,7 @@ public class Leikbord extends Pane {
         for (Pallur d : pallar) {
             d.afram();
             if (bolti.erArekstur(d)) {
-                bolti.setTranslateY(pallur.getTranslateY() - bolti.getHeight()); // set bolti á pallur
+                bolti.setTranslateY(d.getTranslateY() - bolti.getHeight()); // set bolti á pallur
                 bolti.setVely(0); // set vertical í 0
             }
         }
@@ -105,6 +105,11 @@ public class Leikbord extends Pane {
                     bolti.setTranslateY(pallur.getTranslateY() - bolti.getHeight());
                     bolti.setVely(0);
                 });
+        //ai
+        if (ball != null && pallur != null && ball.getBoundsInParent().intersects(pallur.getBoundsInParent())) {
+            ball.setLayoutY(pallur.getLayoutY() - ball.getHeight());
+        }
+
     }
 }
 
